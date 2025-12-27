@@ -1,1 +1,803 @@
-Hello
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>RiskFrameIQ — Cyber risk decisions, made explicit</title>
+  <meta name="description" content="RiskFrameIQ helps organizations and leaders move beyond activity, compliance, and reassurance toward explicit, defensible cyber risk decisions." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0B0D12" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RiskFrameIQ — Cyber risk decisions, made explicit" />
+  <meta property="og:description" content="Move beyond control-driven approaches toward clear, context-aware cyber risk decisions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://riskframeiq.com/" />
+  <!-- Replace with a real image once you have it -->
+  <meta property="og:image" content="https://riskframeiq.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RiskFrameIQ — Cyber risk decisions, made explicit" />
+  <meta name="twitter:description" content="Move beyond control-driven approaches toward clear, context-aware cyber risk decisions." />
+  <meta name="twitter:image" content="https://riskframeiq.com/og-image.png" />
+
+  <!-- Minimal premium typography (system stack; no external deps) -->
+  <style>
+    :root{
+      --bg: #0B0D12;
+      --bg-2: #0F121A;
+      --card: rgba(255,255,255,.04);
+      --card-2: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.10);
+      --border-2: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.90);
+      --muted: rgba(255,255,255,.70);
+      --faint: rgba(255,255,255,.55);
+      --accent: #E6E7EA;
+      --accent-2: rgba(230,231,234,.14);
+      --shadow: 0 16px 50px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius-sm: 14px;
+      --max: 1120px;
+      --pad: 24px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 700px at 70% -10%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(900px 600px at 10% 20%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      color: var(--text);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible{
+      outline: 2px solid rgba(255,255,255,.55);
+      outline-offset: 4px;
+      border-radius: 10px;
+    }
+
+    /* Layout */
+    .container{
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    /* Top nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,18,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 160px;
+    }
+    .mark{
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .mark::after{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%);
+      transform: rotate(18deg);
+    }
+    .brand-name{
+      display:flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .brand-name strong{
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      font-size: 14px;
+      color: rgba(255,255,255,.92);
+    }
+    .brand-name span{
+      font-size: 12px;
+      color: var(--faint);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links{
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content: center;
+      flex: 1;
+    }
+    .nav-links a{
+      font-size: 13px;
+      color: rgba(255,255,255,.70);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+    .nav-links a:hover{
+      color: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    .nav-cta{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      min-width: 160px;
+      justify-content: flex-end;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      font-size: 13px;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.20);
+      transform: translateY(-1px);
+    }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.08));
+      border-color: rgba(255,255,255,.24);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 72px 0 34px 0;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 26px;
+      align-items: start;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .kicker b{
+      font-family: var(--mono);
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+      letter-spacing: 0.02em;
+    }
+
+    h1{
+      margin: 18px 0 12px 0;
+      font-size: clamp(34px, 4.0vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      font-weight: 680;
+      color: rgba(255,255,255,.96);
+    }
+    .lead{
+      margin: 0 0 20px 0;
+      font-size: 16px;
+      color: rgba(255,255,255,.74);
+      max-width: 62ch;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items:center;
+      margin-top: 18px;
+    }
+
+    .micro{
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+    }
+
+    .panel{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .panel-header{
+      padding: 18px 18px 10px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .panel-header .title{
+      font-size: 13px;
+      color: rgba(255,255,255,.82);
+      letter-spacing: 0.02em;
+      font-weight: 650;
+      text-transform: uppercase;
+    }
+    .panel-header .hint{
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      font-family: var(--mono);
+    }
+    .panel-body{
+      padding: 16px 18px 18px 18px;
+    }
+    .panel-body p{
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255,255,255,.70);
+    }
+    .bullets{
+      margin: 14px 0 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .bullets li{
+      display:flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      margin-top: 5px;
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.08);
+      flex: 0 0 auto;
+    }
+    .bullets strong{
+      display:block;
+      font-size: 13px;
+      font-weight: 650;
+      color: rgba(255,255,255,.88);
+      margin-bottom: 2px;
+    }
+    .bullets span{
+      display:block;
+      font-size: 12.5px;
+      color: rgba(255,255,255,.66);
+    }
+
+    /* Section styling */
+    section{
+      padding: 46px 0;
+    }
+    .section-title{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.58);
+      margin: 0 0 10px 0;
+    }
+    .section-headline{
+      margin: 0 0 12px 0;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+      font-weight: 670;
+      color: rgba(255,255,255,.94);
+    }
+    .section-lead{
+      margin: 0 0 20px 0;
+      color: rgba(255,255,255,.72);
+      max-width: 78ch;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 18px;
+      transition: transform .15s ease, border-color .2s ease, background .2s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.05);
+    }
+    .card h3{
+      margin: 0 0 8px 0;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      font-weight: 650;
+      color: rgba(255,255,255,.90);
+    }
+    .card p{
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255,255,255,.68);
+    }
+    .card .tag{
+      display:inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      font-family: var(--mono);
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .list{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+    }
+    .list li{
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+    }
+    .list li b{
+      color: rgba(255,255,255,.88);
+      font-weight: 650;
+    }
+
+    .quote{
+      border-left: 1px solid rgba(255,255,255,.18);
+      padding-left: 14px;
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+    .quote .q{
+      font-size: 13px;
+      color: rgba(255,255,255,.66);
+      margin-top: 8px;
+    }
+
+    /* Contact strip */
+    .cta-strip{
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .cta-strip strong{
+      display:block;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,.92);
+    }
+    .cta-strip span{
+      display:block;
+      margin-top: 4px;
+      font-size: 13px;
+      color: rgba(255,255,255,.68);
+      max-width: 70ch;
+    }
+
+    footer{
+      padding: 26px 0 38px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+    }
+    .footer-inner{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-links{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .footer-links a{
+      color: rgba(255,255,255,.62);
+      padding: 6px 8px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    .footer-links a:hover{
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.82);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .nav-links{ display:none; }
+      .nav-cta{ min-width: auto; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .cta-strip{ flex-direction: column; align-items: flex-start; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      .btn, .card{ transition: none; }
+    }
+  </style>
+
+  <!-- Structured data (minimal) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"RiskFrameIQ",
+    "url":"https://riskframeiq.com",
+    "sameAs":[
+      "https://www.linkedin.com/company/riskframeiq/"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header class="nav" aria-label="Primary navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="RiskFrameIQ home">
+          <span class="mark" aria-hidden="true"></span>
+          <span class="brand-name">
+            <strong>RiskFrameIQ</strong>
+            <span>Cyber risk decisions, made explicit</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Sections">
+          <a href="#problem">Problem</a>
+          <a href="#approach">Approach</a>
+          <a href="#engage">Engagement</a>
+          <a href="#audience">Audience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <!-- Replace with your real LinkedIn company page URL -->
+          <a class="btn" href="https://www.linkedin.com/company/riskframeiq/" target="_blank" rel="noopener">LinkedIn</a>
+          <!-- Replace with your preferred contact method -->
+          <a class="btn primary" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker"><b>Risk governance</b> for leaders who need clarity</div>
+            <h1>Cyber risk is not a control problem. It is a decision problem.</h1>
+            <p class="lead">
+              RiskFrameIQ helps professionals and organizations move beyond activity, compliance, and reassurance
+              toward explicit, defensible cyber risk decisions—especially where ownership, authority, and trade-offs are unclear.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#approach">Learn our approach</a>
+              <a class="btn" href="#engage">How we engage</a>
+            </div>
+
+            <p class="micro">
+              Focus: mindset, reasoning, and decision criteria behind cyber risk management.
+            </p>
+          </div>
+
+          <aside class="panel" aria-label="Decision clarity panel">
+            <div class="panel-header">
+              <div class="title">Decision clarity</div>
+              <div class="hint">Owner · Expiry · Trigger · Review</div>
+            </div>
+            <div class="panel-body">
+              <p>
+                In many organizations, cyber risk is accepted implicitly—through delivery choices,
+                unresolved trade-offs, and ambiguous accountability.
+              </p>
+
+              <ul class="bullets">
+                <li>
+                  <span class="dot" aria-hidden="true"></span>
+                  <div>
+                    <strong>Activity replaces decisions</strong>
+                    <span>Controls exist, but acceptance and boundaries are unstated.</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="dot" aria-hidden="true"></span>
+                  <div>
+                    <strong>Documentation replaces ownership</strong>
+                    <span>Evidence grows faster than operational reality and accountability.</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="dot" aria-hidden="true"></span>
+                  <div>
+                    <strong>Reassurance replaces reduction</strong>
+                    <span>Visibility improves, but exposure remains unclear and unmanaged.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section id="problem">
+      <div class="container">
+        <p class="section-title">The problem</p>
+        <h2 class="section-headline">Most organizations are busy—without being decisive</h2>
+        <p class="section-lead">
+          Many organizations invest in security controls, frameworks, audits, and external advice—yet still struggle to
+          explain whether their cyber risk priorities and recommendations actually make sense.
+          The gap is rarely effort. The gap is decision quality.
+        </p>
+
+        <div class="split">
+          <div class="card">
+            <span class="tag">What happens</span>
+            <p class="quote">
+              Security activity grows. Reporting improves. Audits are passed.
+              Yet risk accumulates quietly because the decisions that bound it are not made explicitly.
+              <span class="q">If no one can state who accepted what risk, for how long, and under which assumptions, risk is being accepted by default.</span>
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="tag">The questions that matter</span>
+            <ul class="list" aria-label="Key governance questions">
+              <li><b>What risk still exists?</b> Not what controls exist.</li>
+              <li><b>Who is accepting it?</b> With actual authority.</li>
+              <li><b>Until when?</b> Time-bounded acceptance, not open-ended drift.</li>
+              <li><b>What triggers a re-decision?</b> Conditions that invalidate assumptions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section id="approach">
+      <div class="container">
+        <p class="section-title">Approach</p>
+        <h2 class="section-headline">Decision-oriented cyber risk governance</h2>
+        <p class="section-lead">
+          RiskFrameIQ focuses on the mindset, reasoning, and decision structure behind cyber risk management.
+          We help teams move beyond control-driven and compliance-led approaches toward clearer, context-aware thinking
+          that supports real decisions.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="tag">Diagnosis</span>
+            <h3>Surface the avoided decision</h3>
+            <p>
+              Identify where discussions become circular, where ownership is implied, and where acceptance happens implicitly—
+              especially under pressure (audits, incidents, procurement, delivery deadlines).
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Language</span>
+            <h3>Make acceptance explicit</h3>
+            <p>
+              Convert vague “risk talk” into a decision record that names an owner, an expiry, re-decision triggers, and a review point—
+              without adding bureaucratic theater.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Governance</span>
+            <h3>Align authority and accountability</h3>
+            <p>
+              Clarify who can accept consequences, what trade-offs are being made, and where decision rights actually sit—
+              preventing “responsibility without authority” from becoming the default.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGAGEMENT -->
+    <section id="engage">
+      <div class="container">
+        <p class="section-title">Engagement</p>
+        <h2 class="section-headline">Where we typically work</h2>
+        <p class="section-lead">
+          We engage as a decision catalyst—helping leadership and teams restore clarity where cyber risk decisions are
+          distributed, delayed, or silently accepted.
+        </p>
+
+        <div class="split">
+          <div class="card">
+            <span class="tag">Typical contexts</span>
+            <ul class="list">
+              <li>Governance and risk reviews where decisions remain implicit</li>
+              <li>Security investment and prioritization discussions (spend vs exposure)</li>
+              <li>Certification preparation and post-certification reality checks</li>
+              <li>Assurance cycles where testing becomes ritual and learning stalls</li>
+              <li>Transitional organizations where security becomes delivery friction</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="tag">What you get</span>
+            <ul class="list">
+              <li><b>Decision clarity</b> for leadership forums and escalations</li>
+              <li><b>Shared language</b> across security, technology, and finance</li>
+              <li><b>Bounded acceptance</b> (time, triggers, review) instead of drift</li>
+              <li><b>Defensible governance</b> that survives pressure and scrutiny</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section id="audience">
+      <div class="container">
+        <p class="section-title">Audience</p>
+        <h2 class="section-headline">Who RiskFrameIQ is for</h2>
+        <p class="section-lead">
+          RiskFrameIQ is designed for people who influence, own, or are preparing to own cyber risk decisions—formally or implicitly.
+          If the primary goal is reassurance, checklists, or tool selection, this is not a fit.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="tag">Security leadership</span>
+            <h3>CISO / Head of Security</h3>
+            <p>
+              Improve decision traceability and governance credibility; avoid being held accountable for outcomes you do not control.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Technology leadership</span>
+            <h3>CTO / Platform / Infrastructure</h3>
+            <p>
+              Translate security concerns into decision language aligned with delivery realities—without turning security into a gate.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Executive oversight</span>
+            <h3>CFO / Exec / Board</h3>
+            <p>
+              Challenge security narratives without becoming technical; demand clarity on residual risk, owners, and time boundaries.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="cta-strip" role="region" aria-label="Contact RiskFrameIQ">
+          <div>
+            <strong>Contact</strong>
+            <span>
+              If you need clearer cyber risk decisions—especially where ownership, authority, or trade-offs are unclear—reach out.
+              We will respond with a short, scoped next step.
+            </span>
+          </div>
+
+          <!-- Replace with your preferred contact endpoints -->
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" href="mailto:contact@riskframeiq.com">contact@riskframeiq.com</a>
+            <a class="btn" href="https://www.linkedin.com/company/riskframeiq/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+            <span class="mark" aria-hidden="true" style="width:22px;height:22px;border-radius:9px;"></span>
+            <strong style="color:rgba(255,255,255,.78); font-weight:650;">RiskFrameIQ</strong>
+          </div>
+          <div>© <span id="y"></span> RiskFrameIQ. All rights reserved.</div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer links">
+          <a href="#problem">Problem</a>
+          <a href="#approach">Approach</a>
+          <a href="#engage">Engagement</a>
+          <a href="#audience">Audience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Keep it minimal; no tracking. Only the year.
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
